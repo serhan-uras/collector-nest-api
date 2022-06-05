@@ -8,9 +8,9 @@ export default class RedshiftClient {
 
     if (!connections[dbName]) {
       const dbUser = 'awsuser';
-      const dbPassword = 'SDFwer741!';
+      const dbPassword = 'SDFwer74!';
       const dbHost =
-        'redshift-cluster-1.cz84nxqwiynm.us-east-2.redshift.amazonaws.com';
+        'redshift-cluster-1.cz84nxqwiynm1.us-east-2.redshift.amazonaws.com';
       const dbPort = '5439';
 
       const dbc = pgp({ capSQL: true });
