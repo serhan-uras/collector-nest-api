@@ -1,0 +1,26 @@
+### Create a new owner
+POST http://localhost:3000/api/owners
+content-type: application/json
+
+{
+  "id": "90a94ec2-e45f-11ec-8fea-0242ac120002",
+  "name": "Serhan Uras"
+}
+
+### Get all owners
+GET http://localhost:3000/api/owners
+
+### Find spesific owners
+GET http://localhost:3000/api/owners/90a94ec2-e45f-11ec-8fea-0242ac120002
+
+
+### Update owners
+PATCH http://localhost:3000/api/owners/90a94ec2-e45f-11ec-8fea-0242ac120002
+content-type: application/json
+
+{
+  "name": "SERHAN URAS"
+}
+
+### Delete an owner given id
+DELETE http://localhost:3000/api/owners/90a94ec2-e45f-11ec-8fea-0242ac120002

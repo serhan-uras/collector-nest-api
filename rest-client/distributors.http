@@ -1,0 +1,27 @@
+### Create a new distributor
+POST http://localhost:3000/api/distributors
+content-type: application/json
+
+{
+  "id": "8288fb26-0007-4731-9de9-1fd873217550",
+  "name": "The IWSR Drinks Plc",
+  "countryId": 209
+}
+
+### Get all distributors
+GET http://localhost:3000/api/distributors
+
+### Find spesific distributor
+GET http://localhost:3000/api/distributors/8288fb26-0007-4731-9de9-1fd873217550
+
+
+### Update distributor
+PATCH http://localhost:3000/api/distributors/8288fb26-0007-4731-9de9-1fd873217550
+content-type: application/json
+
+{
+  "name": "THE IWSR DRINKS PLC"
+}
+
+### Delete a user given id
+DELETE http://localhost:3000/api/distributors/8288fb26-0007-4731-9de9-1fd873217550
