@@ -24,7 +24,7 @@ import { Authorize } from 'src/interceptors/authorize.interceptor';
 @ApiBearerAuth()
 @ApiTags('Owners')
 @Authorize()
-@Controller('owners')
+@Controller('api/owners')
 export class OwnersController {
   constructor(private ownersService: OwnersService) {}
 

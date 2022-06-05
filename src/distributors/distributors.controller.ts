@@ -28,7 +28,7 @@ import { Role } from 'src/auth/rote.entity';
 
 @ApiBearerAuth()
 @ApiTags('Distributors')
-@Controller('distributors')
+@Controller('api/distributors')
 export class DistributorsController {
   constructor(private distributorService: DistributorsService) {}
 
