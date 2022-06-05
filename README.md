@@ -9,6 +9,8 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+There are 2 samples of calling database, owners controller is calling Amazon RedShift, distributors controller is calling sqlite3, which is similar with MySQL.
+
 ## Installation
 
 ```bash
