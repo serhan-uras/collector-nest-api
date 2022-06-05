@@ -1,4 +1,4 @@
-import { AbstractEntity } from 'src/abstract.entity';
+import { AbstractEntity } from 'src/utils/abstract.entity';
 import { AfterInsert, AfterRemove, AfterUpdate, Entity, Column } from 'typeorm';
 
 @Entity('owners')

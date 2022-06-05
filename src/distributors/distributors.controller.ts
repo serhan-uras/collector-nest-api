@@ -9,7 +9,12 @@ import {
   NotFoundException,
   ParseUUIDPipe,
 } from '@nestjs/common';
-import { ApiResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import {
   UpdateDistributorDto,
   CreateDistributorDto,
@@ -17,8 +22,11 @@ import {
 } from './dtos/';
 import { DistributorsService } from './distributors.service';
 import { Serialize } from '../interceptors/serialize.interceptor';
-import { GetUser } from 'src/user/user.decorator';
+import { GetUser } from 'src/auth/user.decorator';
+import { Authorize } from 'src/interceptors/authorize.interceptor';
+import { Role } from 'src/auth/rote.entity';
 
+@ApiBearerAuth()
 @ApiTags('Distributors')
 @Controller('distributors')
 export class DistributorsController {
@@ -28,6 +36,7 @@ export class DistributorsController {
   @ApiOperation({ summary: 'Get all distributor' })
   @ApiResponse({ status: 200, description: 'Return all distributor.' })
   @Serialize(DistributorDto)
+  @Authorize([Role.ResearchDirectors])
   async findAll() {
     return await this.distributorService.findAll();
   }
@@ -37,6 +46,7 @@ export class DistributorsController {
   @ApiResponse({ status: 200, description: 'Return distributor feed.' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Serialize(DistributorDto)
+  @Authorize([Role.CentralTeam])
   async find(@Param('id', ParseUUIDPipe) id: string) {
     const distributor = await this.distributorService.findOne(id);
     if (!distributor) {
@@ -52,6 +62,7 @@ export class DistributorsController {
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Serialize(DistributorDto)
+  @Authorize([Role.ResearchDirectors])
   @Post('/')
   createUser(@GetUser() user, @Body() body: CreateDistributorDto) {
     this.distributorService.create(user, { ...body });
@@ -64,6 +75,7 @@ export class DistributorsController {
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Serialize(DistributorDto)
+  @Authorize()
   @Patch('/:id')
   async update(
     @GetUser() user,
@@ -80,6 +92,7 @@ export class DistributorsController {
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Serialize(DistributorDto)
+  @Authorize()
   @Delete('/:id')
   async remove(@Param('id', ParseUUIDPipe) id: string) {
     return await this.distributorService.remove(id);

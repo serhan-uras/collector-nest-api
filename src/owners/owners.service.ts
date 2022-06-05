@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Owner } from './owner.entity';
-import { User } from 'src/user/user.entity';
-import RedshiftClient from 'src/redshift.client';
+import { User } from 'src/auth/user.entity';
+import RedshiftClient from 'src/utils/redshift.client';
 
 @Injectable()
 export class OwnersService {
@@ -20,10 +20,6 @@ export class OwnersService {
     const queryResult = await RedshiftClient.executeQuery(`
       SELECT * FROM owners WHERE id = '${id}'
     `);
-
-    console.log({
-      queryResult,
-    });
 
     return queryResult.length > 0 ? queryResult[0] : null;
   }

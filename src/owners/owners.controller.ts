@@ -9,13 +9,21 @@ import {
   NotFoundException,
   ParseUUIDPipe,
 } from '@nestjs/common';
-import { ApiResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { UpdateOwnerDto, CreateOwnerDto, OwnerDto } from './dtos/';
 import { OwnersService } from './owners.service';
 import { Serialize } from '../interceptors/serialize.interceptor';
-import { GetUser } from 'src/user/user.decorator';
+import { GetUser } from 'src/auth/user.decorator';
+import { Authorize } from 'src/interceptors/authorize.interceptor';
 
+@ApiBearerAuth()
 @ApiTags('Owners')
+@Authorize()
 @Controller('owners')
 export class OwnersController {
   constructor(private ownersService: OwnersService) {}
