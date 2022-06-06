@@ -57,13 +57,13 @@ export class AuthorizationMiddleware implements NestMiddleware {
       const claim = (await this.verifyPromised(token, key.pem)) as Claim;
       const currentSeconds = Math.floor(new Date().valueOf() / 1000);
       if (currentSeconds > claim.exp || currentSeconds < claim.auth_time) {
-        //throw new Error('claim is expired or invalid');
+        throw new Error('claim is expired or invalid');
       }
       if (claim.iss !== this.cognitoIssuer) {
-        //throw new Error('claim issuer is invalid');
+        throw new Error('claim issuer is invalid');
       }
       if (claim.token_use !== 'access') {
-        //throw new Error('claim use is not access');
+        throw new Error('claim use is not access');
       }
 
       req[AUTHORIZED_USER_DATA] = {
