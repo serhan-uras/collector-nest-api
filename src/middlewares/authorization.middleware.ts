@@ -4,12 +4,11 @@ import {
   MapOfKidToPublicKey,
   PublicKeys,
   TokenHeader,
-} from 'src/auth/cognito.entity';
+} from '../auth/cognito.entity';
 import * as axios from 'axios';
 import jwkToPem from 'jwk-to-pem';
 import { promisify } from 'util';
 import * as jsonwebtoken from 'jsonwebtoken';
-import { json } from 'express';
 
 export const AUTHORIZED_USER_DATA = 'authorized-user-data';
 

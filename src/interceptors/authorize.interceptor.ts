@@ -8,9 +8,9 @@ import {
   HttpException,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { Role } from 'src/auth/rote.entity';
-import { User } from 'src/auth/user.entity';
-import { AUTHORIZED_USER_DATA } from 'src/middlewares/authorization.middleware';
+import { Role } from '../auth/role.entity';
+import { User } from '../auth/user.entity';
+import { AUTHORIZED_USER_DATA } from '../middlewares/authorization.middleware';
 
 export function Authorize(roles?: Role[]) {
   return UseInterceptors(new AuthorizeInterceptor(roles ?? []));

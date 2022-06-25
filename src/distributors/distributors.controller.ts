@@ -22,9 +22,9 @@ import {
 } from './dtos/';
 import { DistributorsService } from './distributors.service';
 import { Serialize } from '../interceptors/serialize.interceptor';
-import { GetUser } from 'src/auth/user.decorator';
-import { Authorize } from 'src/interceptors/authorize.interceptor';
-import { Role } from 'src/auth/rote.entity';
+import { GetUser } from '../auth/user.decorator';
+import { Authorize } from '../interceptors/authorize.interceptor';
+import { Role } from '../auth/role.entity';
 
 @ApiBearerAuth()
 @ApiTags('Distributors')

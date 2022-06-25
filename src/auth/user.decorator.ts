@@ -1,6 +1,6 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { HttpStatus, HttpException } from '@nestjs/common';
-import { AUTHORIZED_USER_DATA } from 'src/middlewares/authorization.middleware';
+import { AUTHORIZED_USER_DATA } from '../middlewares/authorization.middleware';
 
 import { User } from './user.entity';
 

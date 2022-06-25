@@ -42,6 +42,7 @@
     "rxjs": "^6.6.6",
     "sqlite3": "^5.0.2",
     "swagger-ui-express": "^4.4.0",
+    "ts-mockery": "^1.2.0",
     "typeorm": "^0.2.34"
   },
   "devDependencies": {

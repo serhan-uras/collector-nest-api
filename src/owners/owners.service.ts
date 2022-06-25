@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Owner } from './owner.entity';
-import { User } from 'src/auth/user.entity';
-import RedshiftClient from 'src/utils/redshift.client';
+import { User } from '../auth/user.entity';
+import RedshiftClient from '../utils/redshift.client';
 
 @Injectable()
 export class OwnersService {

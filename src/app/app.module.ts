@@ -11,18 +11,21 @@ import { DistributorsModule } from '../distributors/distributor.module';
 import { Distributor } from '../distributors/distributor.entity';
 import { OwnersModule } from '../owners/owner.module';
 import { LoggerMiddleware } from '../middlewares/logger.middleware';
-import { AuthorizationMiddleware } from 'src/middlewares/authorization.middleware';
+import { AuthorizationMiddleware } from '../middlewares/authorization.middleware';
+import { CountryEntity } from '../countries/country.entity';
+import { CountriesModule } from '../countries/countries.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'collector-nest-api.sqlite',
-      entities: [Distributor],
+      entities: [Distributor, CountryEntity],
       synchronize: true,
     }),
     DistributorsModule,
     OwnersModule,
+    CountriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
